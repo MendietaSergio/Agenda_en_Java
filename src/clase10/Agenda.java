@@ -135,8 +135,20 @@ public class Agenda extends javax.swing.JFrame {
 
     private void btnBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscadorActionPerformed
         String apellido = this.jtfApellido.getText();
-        alBuscadosPorApellido(apellido);
+        String nombre = this.jtfNombre.getText();
+        String mail = this.jtfEmail.getText();
+
+        if(apellido.length()>0){
+            alBuscadosPorApellido(apellido);
+        }
+        if(nombre.length()>0){
+            alBuscadosPorNombre(nombre);
+        }
+        if(mail.length()>0){
+            alBuscadosPorEmail(mail);            
+        }
         imprimirArray(alBuscados);
+        
     }//GEN-LAST:event_btnBuscadorActionPerformed
 
     private void jtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfApellidoActionPerformed
@@ -172,6 +184,22 @@ public class Agenda extends javax.swing.JFrame {
         this.alBuscados = new ArrayList();
         for (int i = 0; i < this.alContactos.size(); i++) {
             if(alContactos.get(i).getApellido().equals(apellidoBuscado)){
+                this.alBuscados.add(alContactos.get(i));
+            }
+        }
+    }
+    public void alBuscadosPorNombre(String nombreBuscado){
+        this.alBuscados = new ArrayList();
+        for (int i = 0; i < this.alContactos.size(); i++) {
+            if(alContactos.get(i).getNombre().equals(nombreBuscado)){
+                this.alBuscados.add(alContactos.get(i));
+            }
+        }
+    }
+    public void alBuscadosPorEmail(String emailBuscado){
+        this.alBuscados = new ArrayList();
+        for (int i = 0; i < this.alContactos.size(); i++) {
+            if(alContactos.get(i).getMail().equals(emailBuscado)){
                 this.alBuscados.add(alContactos.get(i));
             }
         }
